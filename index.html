@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <title>Cotizador de Seguro Automotor</title>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="title">
+            <h1>Cotizador de Seguro Automotor</h1>
+        </div>
+        <form action="" id="form">
+            <div class="input-group mb-3" id="tipo-vehiculo">
+                <label class="input-group-text" for="inputGroupSelect01">Indique el tipo de vehículo a cotizar</label>
+                <select class="form-select" id="inputGroupSelect01">
+                    <option value="1">Automóvil</option>
+                    <option value="2">Motocicleta</option>
+                    <option value="3">Utilitario</option>
+                </select>
+            </div>
+            <div class="input-group mb-3" id="anio-vehiculo">
+                <label class="input-group-text" for="inputGroupSelect01">Indique el año del vehículo a cotizar</label>
+                <select class="form-select" id="inputGroupSelect01">
+                    <option value="1">2000</option>
+                    <option value="2">2001</option>
+                    <option value="3">2002</option>
+                    <option value="4">2003</option>
+                    <option value="5">2004</option>
+                    <option value="6">2005</option>
+                    <option value="7">2006</option>
+                    <option value="8">2007</option>
+                    <option value="9">2008</option>
+                    <option value="10">2009</option>
+                    <option value="11">2010</option>
+                    <option value="12">2011</option>
+                    <option value="13">2012</option>
+                    <option value="14">2013</option>
+                    <option value="15">2014</option>
+                    <option value="16">2015</option>
+                    <option value="17">2016</option>
+                    <option value="18">2017</option>
+                    <option value="19">2018</option>
+                    <option value="20">2019</option>
+                    <option value="21">2020</option>
+                    <option value="22">2021</option>
+                    <option value="22">2022</option>
+                    <option value="22">2023</option>
+                </select>
+            </div>
+            <div class="input-group mb-3" id="precio-vehiculo">
+                <label class="input-group-text" for="inputGroupSelect01">Ingrese el precio de su vehículo</label>
+                <input type="text">
+            </div>
+            <div class="input-group mb-3" id="cochera">
+                <label class="input-group-text"             for="inputGroupSelect01">Indique si posee o no cochera</label>
+                <select class="form-select" id="inputGroupSelect01">
+                    <option value="1">Sí</option>
+                    <option value="2">No</option>
+                </select>
+            </div>
+            <input class="btn btn-outline-primary" type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
