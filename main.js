@@ -1,92 +1,75 @@
-let tipoVehiculo= prompt("Indique el tipo de vehículo a cotizar");
+const iva= 0.21;
+const tipoVehiculoAutomovil= 0.03;
+const tipoVehiculoMotocicleta= 0.04;
+const tipoVehiculoUtilitario= 0.05;
+const gamaBaja= 0;
+const gamaMedia= 0.05;
+const gamaAlta= 0.1;
+const cocheraNo= 0.05;
+const tasaMasDiez= 0.1;
+const tasaHastaDiez= 0.05;
+const tasaCero= 0;
 
-let precioVehiculo= prompt("Ingrese el precio del vehículo a cotizar");
+let total = 0;
+let mensajeTipoVehiculo = "Indique el tipo de vehículo a cotizar \n" + "1) Automóvil \n" + "2) Motocicleta \n" + "3) Utilitario \n" + " \n" + "Elegí la opción correcta:"
 
-let anioFabricacion= prompt("Indique el año de fabricación del vehículo a cotizar");
+cotizar();
 
-let cochera= prompt("Indique si posee o no cochera");
+function cotizar (){
+    let tipoVehiculo = 0;
+    while (tipoVehiculo !== "1" && tipoVehiculo !== "2" && tipoVehiculo !== "3" && tipoVehiculo !== null) {
+        tipoVehiculo = prompt(mensajeTipoVehiculo);
+    }
+    
+    if (tipoVehiculo == null){
+        return;
+    }
+    
+    let precioVehiculo= parseInt(prompt("Ingrese el precio del vehículo"));
+    let anioFabricacion= parseInt(prompt("Indique el año de fabricación del vehículo"));
+    let cochera= confirm("Indique si posee o no cochera");
+    
+    switch(tipoVehiculo){
+        case "1": 
+            total = precioVehiculo * tipoVehiculoAutomovil;
+            break;
+    
+        case "2": 
+            total = precioVehiculo * tipoVehiculoMotocicleta;
+            break;
+    
+        case "3":
+            total = precioVehiculo * tipoVehiculoUtilitario;
+            break; 
+    
+        default: 
+            alert("No se ingresó un dato válido");
+    }
 
-iva= (resp)
+    if (precioVehiculo >= 10000000) {
+        total += precioVehiculo * gamaAlta;
+    } else if (precioVehiculo >= 5000000) {
+        total += precioVehiculo * gamaMedia;
+    } else {
+        total += precioVehiculo * gamaBaja;
+    }
+    
+    if (anioFabricacion <= 2013) {
+        total += precioVehiculo * tasaMasDiez;
+    } else if (anioFabricacion <= 2022) {
+        total += precioVehiculo * tasaHastaDiez;
+    } else {
+        total += precioVehiculo * tasaCero;
+    }
 
-let ingresosBrutos= 0.05;
+    if (!cochera) {
+        total += precioVehiculo * cocheraNo;
+    }
 
-let tipoVehiculoPorcentajeAutomovil= 0.04;
+    if (total >= 0){
+        total += total * iva;
+    }
 
-let tipoVehiculoPorcentajeMotocicleta= 0.05;
-
-let tipoVehiculoPorcentajeUtilitario= 0.03;
-
-let precioVehiculoPorcentajeMenorCincoMillones= 0.05;
-
-let precioVehiculoPorcentajeMayorDiezMillones= 0.02;
-
-let precioVehiculoPorcentajeIntermedio= 0.01;
-
-let anioFabricacionMenorDosMilTrece= 0.02;
-
-let anioFabricacionDosMilVeintitres= 0;
-
-let anioFabricacionIntermedio= 0.01;
-
-let cocheraSi= 0;
-
-let cocheraNo= 0.01;
-
-let respuestaPorcentajeBaseAutomovil= precioVehiculo*tipoVehiculoPorcentajeAutomovil;
-
-let respuestaPorcentajeBaseMotocicleta= precioVehiculo*tipoVehiculoPorcentajeMotocicleta;
-
-let respuestaPorcentajeBaseUtilitario= precioVehiculo*tipoVehiculoPorcentajeUtilitario;
-
-let respuestaPorcentajeAnioMenorDosMilTrece= precioVehiculo*0.02;
-
-let respuestaPorcentajeAnioDosMilVeintitres= precioVehiculo*0;
-
-let respuestaPorcentajeAnioIntermedio= precioVehiculo*0.01;
-
-let respuestaPorcentajeCocheraSi= precioVehiculo*0;
-
-let respuestaPorcentajeCocheraNo= precioVehiculo*0.01;
-
-function Vehiculo (tipoVehiculo, precioVehiculo, anioFabricacion, cochera, iva, ingresosBrutos){
-    this.tipoVehiculo= tipoVehiculo;
-    this.precioVehiculo= precioVehiculo;
-    this.anioFabricacion= anioFabricacion;
-    this.cochera= cochera;
-    this.iva= iva;
-    this.ingresosBrutos= ingresosBrutos;
-}
-
-//creacion de 3 vehiculos: automovil(1), motocicleta(2), utilitario(3)//
-const Vehiculo1 = new Vehiculo (tipoVehiculo, precioVehiculo, anioFabricacion, cochera, iva, ingresosBrutos);
-
-const Vehiculo2= new Vehiculo (tipoVehiculo, precioVehiculo, anioFabricacion, cochera, iva, ingresosBrutos);
-
-const Vehiculo3= new Vehiculo (tipoVehiculo, precioVehiculo, anioFabricacion, cochera, iva, ingresosBrutos);
-
-//calcular % por tipo de vehiculo:seguro base//
-//if: automovil, else if:motocicleta, else: utilitario//
-if (tipoVehiculo === Vehiculo1){
-    console.log("Respuesta % seguro base para autmovil ", precioVehiculo*tipoVehiculoPorcentajeAutomovil);
-} else if (tipoVehiculo === Vehiculo2){
-    console.log ("Respuesta % seguro base para motocicleta ", precioVehiculo*tipoVehiculoPorcentajeMotocicleta);
-} else (tipoVehiculo === Vehiculo3){
-    console.log("Respuesta % seguro base para utilitario ", precioVehiculo*tipoVehiculoPorcentajeUtilitario);
-}
-
-//calcular % por año de fabricacion//
-if (tipoVehiculo === anioFabricacionMenorDosMilTrece){
-    console.log("Respuesta % año <= 2013 ", precioVehiculo*0.02);
-} else if (tipoVehiculo === anioFabricacionDosMilVeintitres){
-    console.log("Respuesta % año = 2023 ", precioVehiculo*0);
-} else (tipoVehiculo === anioFabricacionIntermedio){
-    console.log("Respuesta % intermedio ",precioVehiculo*0.01);
-}
-
-//calcular % por cochera//
-if (tipoVehiculo === cocheraSi){
-    console.log("Respuesta % por cochera SI ", precioVehiculo*0);
-} else (tipoVehiculo === cocheraNo){
-    console.log("Respuesta % por cochera NO "precioVehiculo*0.01);
+    alert("El total de tu seguro es $" + total + " anual.");
 }
 
