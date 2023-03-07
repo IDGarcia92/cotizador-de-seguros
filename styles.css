@@ -4,3 +4,19 @@
     box-sizing: border-box;
 }
 
+body{
+    background-image: url(./multimedia/car-929_256.gif);
+    background-repeat: no-repeat;
+}
+
+footer{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border-top: 3px green solid;
+}
+
+.security-icon{
+    height: 28px;
+    width: 28px;
+}
