@@ -25,9 +25,22 @@ function cotizar (){
         return;
     }
     
-    let precioVehiculo= parseInt(prompt("Ingrese el precio del vehículo"));
-    let anioFabricacion= parseInt(prompt("Indique el año de fabricación del vehículo"));
-    let cochera= confirm("Indique si posee o no cochera");
+    let precioVehiculo= parseInt(prompt("Ingrese el precio del vehículo."));
+
+    while (isNaN(precioVehiculo)) {
+        precioVehiculo = parseInt(prompt("Ingrese el precio del vehículo."));
+        if (isNaN(precioVehiculo)) {
+        alert("Ingrese un número válido.");
+        }
+    }
+
+    let anioFabricacion= parseInt(prompt("Indique el año de fabricación del vehículo."));
+
+    do {
+        anioFabricacion = parseInt(prompt("Indique el año de fabricación del vehículo."));
+    } while (isNaN(anioFabricacion));
+    
+    let cochera= confirm("Indique si posee o no cochera.");
     
     switch(tipoVehiculo){
         case "1": 
@@ -43,9 +56,8 @@ function cotizar (){
             break; 
     
         default: 
-            alert("No se ingresó un dato válido");
+            alert("No se ingresó un dato válido.");
     }
-
     if (precioVehiculo >= 10000000) {
         total += precioVehiculo * gamaAlta;
     } else if (precioVehiculo >= 5000000) {
@@ -61,15 +73,12 @@ function cotizar (){
     } else {
         total += precioVehiculo * tasaCero;
     }
-
     if (!cochera) {
         total += precioVehiculo * cocheraNo;
     }
-
     if (total >= 0){
         total += total * iva;
     }
-
     alert("El total de tu seguro es $" + total + " anual.");
 }
 
